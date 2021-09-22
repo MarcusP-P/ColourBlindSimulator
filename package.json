@@ -6,6 +6,7 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.15.6",
     "@babel/preset-env": "^7.15.6",
     "@babel/preset-typescript": "^7.15.0",
+    "@types/fscreen": "^1.0.1",
     "@types/webpack-dev-server": "^4.1.0",
     "@typescript-eslint/eslint-plugin": "^4.31.2",
     "@typescript-eslint/parser": "^4.31.2",
@@ -23,5 +24,8 @@
     "build": "npx webpack --mode production",
     "lint": "npx eslint . --ext .ts",
     "dev": "npx webpack-dev-server --mode development"
+  },
+  "dependencies": {
+    "fscreen": "^1.2.0"
   }
 }
