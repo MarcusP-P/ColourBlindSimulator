@@ -1,5 +1,4 @@
 {
-	"version": "2.0.0",
 	"tasks": [
 		{
 			"type": "npm",
@@ -10,7 +9,7 @@
 			},
 			"problemMatcher": [],
 			"label": "npm: build",
-			"detail": "npm run build:tsc && npm run build:babel && npm run build:cp-public"
+			"detail": "npx webpack --mode production"
 		}
 	]
 }

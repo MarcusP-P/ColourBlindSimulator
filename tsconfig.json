@@ -10,9 +10,10 @@
     "strict": true,
     "noEmit": true,
     // Search under node_modules for non-relative imports.
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "esModuleInterop": true,
   },
   "include": [
     "src"
-  ]
+, "webpack.config.ts"  ]
 }
