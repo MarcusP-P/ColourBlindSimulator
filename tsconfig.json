@@ -1,12 +1,18 @@
 {
   "compilerOptions": {
-    "allowJs": true,            
+    "allowJs": true,
     "checkJs": true,
     "outFile": "dist/index.js",
     "sourceMap": true,
-    "target": "ES6",
+    "target": "ESNext",
     "noImplicitAny": true,
     "noImplicitReturns": true,
-    "strict": true
-  }
+    "strict": true,
+    "noEmit": true,
+    // Search under node_modules for non-relative imports.
+    "moduleResolution": "node"
+  },
+  "include": [
+    "src"
+  ]
 }
