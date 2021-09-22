@@ -2,14 +2,14 @@
 	"tasks": [
 		{
 			"type": "npm",
-			"script": "build",
+			"script": "dev",
+			"problemMatcher": [],
+			"label": "npm: dev",
+			"detail": "npx webpack-dev-server --mode development",
 			"group": {
 				"kind": "build",
 				"isDefault": true
-			},
-			"problemMatcher": [],
-			"label": "npm: build",
-			"detail": "npx webpack --mode production"
+			}
 		}
 	]
 }
