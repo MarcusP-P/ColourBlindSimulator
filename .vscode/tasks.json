@@ -1,15 +1,54 @@
 {
+	"version": "2.0.0",
 	"tasks": [
 		{
 			"type": "npm",
 			"script": "dev",
 			"problemMatcher": [],
-			"label": "npm: dev",
-			"detail": "npx webpack-dev-server --mode development",
+			"label": "build-dev",
+			"detail": "Build static developer site.",
 			"group": {
 				"kind": "build",
-				"isDefault": true
+				"isDefault": true,
+			},
+		},
+		{
+			"type": "npm",
+			"script": "start",
+			"label": "dev-server",
+			"detail": "Start webpack-dev-server.",
+			"promptOnClose": true,
+			"isBackground": true,
+			"problemMatcher": {
+				"owner": "webpack",
+				"severity": "error",
+				"fileLocation": "absolute",
+				"pattern": [
+					{
+						"regexp": "ERROR in (.*)",
+						"file": 1
+					},
+					{
+						"regexp": "\\((\\d+),(\\d+)\\):(.*)",
+						"line": 1,
+						"column": 2,
+						"message": 3
+					}
+				],
+				"background": {
+					"activeOnStart": true,
+					"beginsPattern": "Compiling\\.\\.\\.",
+					"endsPattern": "compiled.*\\bsuccessfully"
+				}
 			}
-		}
-	]
+		},
+		{
+			"type": "npm",
+			"script": "build",
+			"problemMatcher": [],
+			"label": "build",
+			"detail": "Build static production site.",
+			"group": "build",
+		},
+	],
 }

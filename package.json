@@ -23,7 +23,8 @@
   "scripts": {
     "build": "npx webpack --mode production",
     "lint": "npx eslint . --ext .ts",
-    "dev": "npx webpack-dev-server --mode development"
+    "dev": "npx webpack --mode development",
+    "start": "npx webpack serve --mode development --no-color"
   },
   "dependencies": {
     "fscreen": "^1.2.0"
