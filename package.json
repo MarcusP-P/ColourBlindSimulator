@@ -23,6 +23,6 @@
     "build": "npx webpack --mode production",
     "lint": "npx eslint . --ext .ts",
     "dev": "npx webpack --mode development",
-    "dev-server": "npx webpack-dev-server --mode development"
+    "start": "npx webpack serve --mode development --no-color"
   }
 }
