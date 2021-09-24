@@ -1,11 +1,20 @@
 {
     "configurations": [
-    {
-        "name": "Launch Edge",
-        "request": "launch",
-        "type": "pwa-msedge",
-        "url": "http://localhost:4000",
-        "webRoot": "${workspaceFolder}"
-    }
+        {
+            "name": "Edge: dev static",
+            "preLaunchTask": "build-dev",
+            "request": "launch",
+            "type": "pwa-msedge",
+            "url": "file:///${workspaceFolder}/dist/index.html",
+            "webRoot": "${workspaceFolder}",
+        },
+        {
+            "name": "Edge: prod static",
+            "preLaunchTask": "build",
+            "request": "launch",
+            "type": "pwa-msedge",
+            "url": "file:///${workspaceFolder}/dist/index.html",
+            "webRoot": "${workspaceFolder}",
+        },
     ]
 }

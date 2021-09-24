@@ -22,6 +22,7 @@
   "scripts": {
     "build": "npx webpack --mode production",
     "lint": "npx eslint . --ext .ts",
-    "dev": "npx webpack-dev-server --mode development"
+    "dev": "npx webpack --mode development",
+    "dev-server": "npx webpack-dev-server --mode development"
   }
 }
