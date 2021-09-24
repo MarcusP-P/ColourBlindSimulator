@@ -14,7 +14,6 @@ const config: Configuration = {
           loader: "babel-loader",
           options: {
             presets: ["@babel/preset-env", "@babel/preset-typescript"],
-
           },
         },
       },
@@ -29,9 +28,20 @@ const config: Configuration = {
     clean: true,
   },
   devServer: {
-    static: path.join(__dirname, "dist"),
-    compress: true,
+    static: {
+      directory: path.join(__dirname, "dist"),
+      watch: true,
+    },
+    client: {
+      logging: "info",
+      overlay: {
+        errors: true,
+        warnings: true,
+      },
+    },
+    hot: true,
     port: 4000,
+    bonjour: true,
   },
   plugins: [
       new CopyPlugin ({
@@ -43,7 +53,7 @@ const config: Configuration = {
           ]
       }),
   ],
-  devtool: "source-map"
+  devtool: "eval-source-map"
 };
 
 export default config;
