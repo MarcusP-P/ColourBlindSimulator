@@ -1,7 +1,7 @@
 import "./helloWorld.ts"
 import "./calibrate.ts"
 
-import { Matrix } from "./matrix"
+import { Matrix } from "./Maths/Matrix"
 
 
 let foo=new Matrix(3,3);
