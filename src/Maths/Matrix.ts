@@ -75,7 +75,7 @@ export class Matrix {
                     accumulator += first.GetValue(destRow, position) * second.GetValue(position, destColumn);
                 }
 
-                result.SetValue(destRow, destColumn, Math.roundToPrecision(accumulator, 10));
+                result.SetValue(destRow, destColumn, Math.roundToPrecision(accumulator, 15));
             }
         }
         return result;
@@ -88,7 +88,7 @@ export class Matrix {
 
             let destColumn: number;
             for (destColumn = 0; destColumn < result.Columns; destColumn++) {
-                result.SetValue(destRow, destColumn, Math.roundToPrecision(scalar * matrix.GetValue(destRow, destColumn), 10));
+                result.SetValue(destRow, destColumn, Math.roundToPrecision(scalar * matrix.GetValue(destRow, destColumn), 15));
             }
         }
         return result;
@@ -162,7 +162,7 @@ export class Matrix {
         // Not part of the algorithm, but javascript float calculation leaves some pretty annoying rounding errors 
         for (i = 0; i < source.Rows; i++) {
             for (j = 0; j < source.Rows; j++) {
-                result.SetValue(i, j, Math.roundToPrecision(result.GetValue(i, j), 10));
+                result.SetValue(i, j, Math.roundToPrecision(result.GetValue(i, j), 15));
             }
         }
 
