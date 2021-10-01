@@ -72,7 +72,7 @@ export class Matrix {
 
                 let position: number;
                 for (position = 0; position < first.Columns; position++) {
-                    accumulator += first.GetValue(destRow, position) * second.GetValue(position, destColumn);
+                    accumulator += Math.roundToPrecision(first.GetValue(destRow, position) * second.GetValue(position, destColumn),15);
                 }
 
                 result.SetValue(destRow, destColumn, Math.roundToPrecision(accumulator, 15));
@@ -123,12 +123,12 @@ export class Matrix {
             }
 
             // Step 4 - update determinant
-            determinant = determinant * pivot;
+            determinant = Math.roundToPrecision(determinant * pivot, 15);
 
             // Step 5 - Calculate the new values of the pivot row
             for (j = 0; j < source.Rows; j++) {
                 if (j != p) {
-                    result.SetValue(p, j, result.GetValue(p, j) / pivot);
+                    result.SetValue(p, j, Math.roundToPrecision(result.GetValue(p, j) / pivot,15));
                 }
             }
 
@@ -139,7 +139,7 @@ export class Matrix {
                 if (i != p) {
                     for (j = 0; j < source.Rows; j++) {
                         if (j != p) {
-                            result.SetValue(i, j, result.GetValue(i, j) - result.GetValue(p, j) * result.GetValue(i, p));
+                            result.SetValue(i, j, Math.roundToPrecision(result.GetValue(i, j) - result.GetValue(p, j) * result.GetValue(i, p),15));
                         }
                     }
                 }
@@ -149,23 +149,23 @@ export class Matrix {
             // Note: Step 6 needs to be done after step 7...
             for (i = 0; i < source.Rows; i++) {
                 if (i != p) {
-                    result.SetValue(i, p, - result.GetValue(i, p) / pivot);
+                    result.SetValue(i, p, Math.roundToPrecision(- result.GetValue(i, p) / pivot, 15));
                 }
             }
 
             // Step 8 - Calculate the new value of the current pivot
-            result.SetValue(p, p, 1 / pivot);
+            result.SetValue(p, p, Math.roundToPrecision(1 / pivot,15));
 
             // Step 9 - go onto next iteration
         }
-
+/*
         // Not part of the algorithm, but javascript float calculation leaves some pretty annoying rounding errors 
         for (i = 0; i < source.Rows; i++) {
             for (j = 0; j < source.Rows; j++) {
                 result.SetValue(i, j, Math.roundToPrecision(result.GetValue(i, j), 15));
             }
         }
-
+*/
         // Step 10 - return the inverse
         return result;
     }
