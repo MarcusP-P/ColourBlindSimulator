@@ -27,6 +27,7 @@
     "start": "npx webpack serve --mode development --no-color"
   },
   "dependencies": {
+    "cie-colorconverter": "MarcusP-P/CIE-ColorConverter",
     "fscreen": "^1.2.0"
   }
 }
