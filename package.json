@@ -21,5 +21,8 @@
   "dependencies": {
     "cie-colorconverter": "^2.0.1",
     "fscreen": "^1.2.0"
-  }
+  },
+  "name": "colour-blind-simulator",
+  "version": "1.0.0",
+  "private": true
 }
