@@ -3,17 +3,17 @@
     "allowJs": true,
     "checkJs": true,
     "sourceMap": true,
+    "module": "es6",
     "target": "ESNext",
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "strict": true,
     "strictNullChecks": true,
-    "noEmit": true,
     // Search under node_modules for non-relative imports.
     "moduleResolution": "node",
     "esModuleInterop": true,
   },
   "include": [
     "./src/**/*"
-, "webpack.config.ts"  ]
+  ]
 }

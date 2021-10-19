@@ -1,26 +1,23 @@
-import path from "path";
-import { Configuration } from "webpack";
-
+const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 
-const config: Configuration = {
+module.exports = {
   entry: "./src/index.ts",
   module: {
     rules: [
       {
-        test: /\.(ts|js)?$/,
+        test: /\.tsx?$/,
+        include: [
+          path.resolve(__dirname, 'src')
+        ],
+        use: 'ts-loader',
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env", "@babel/preset-typescript"],
-          },
-        },
+
       },
     ],
   },
   resolve: {
-    extensions: [".ts", ".js"],
+    extensions: [".tsx", ".ts", ".js"],
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -55,5 +52,3 @@ const config: Configuration = {
   ],
   devtool: "eval-source-map"
 };
-
-export default config;
