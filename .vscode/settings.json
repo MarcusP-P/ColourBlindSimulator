@@ -1,5 +1,6 @@
 {
     "files.exclude": {
+        "build": true,
         "dist": true,
         "node_modules": true,
         "**/.git": true,
@@ -13,5 +14,6 @@
         "copyfiles",
         "fscreen",
         "linebreak"
-    ]
+    ],
+    "typescript.tsdk": "node_modules\\typescript\\lib"
 }
