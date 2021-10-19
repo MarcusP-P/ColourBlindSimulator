@@ -1,10 +1,10 @@
 {
   "devDependencies": {
     "@types/fscreen": "^1.0.1",
-    "@typescript-eslint/eslint-plugin": "^4.31.2",
-    "@typescript-eslint/parser": "^4.31.2",
+    "@typescript-eslint/eslint-plugin": "^5.1.0",
+    "@typescript-eslint/parser": "^5.1.0",
     "copy-webpack-plugin": "^9.0.1",
-    "eslint": "^7.32.0",
+    "eslint": "^8.0.1",
     "ts-loader": "^9.2.6",
     "tsc": "^2.0.3",
     "typescript": "^4.4.3",
