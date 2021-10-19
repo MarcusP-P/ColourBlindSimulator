@@ -1,4 +1,4 @@
-import "./helloWorld.ts"
+import { helloWorld } from './helloWorld'
 
 import { ColorConverter } from 'cie-colorconverter'
 
@@ -8,3 +8,4 @@ converter.RefWhite = "D65";
 
 let LuvNewNew = converter.RGB_to_Luv([119, 119, 119]);
 let RGBNewNew = converter.Luv_to_RGB([50, 0, 0]);
+helloWorld();
