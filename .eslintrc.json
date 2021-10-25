@@ -407,8 +407,52 @@
             "always"
         ],
         //Typescript rules: https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin
-        // note: not audited from beginning to @typescript-eslint/no-invalid-void-type
-
+        "@typescript-eslint/array-type": [
+            "error",
+            {
+                "default": "array",
+                "readonly": "array"
+            }
+        ],
+        "@typescript-eslint/ban-tslint-comment": [
+            "error"
+        ],
+        "@typescript-eslint/class-literal-property-style": [
+            "error"
+        ],
+        "@typescript-eslint/consistent-indexed-object-style": [
+            "error"
+        ],
+        "@typescript-eslint/assertionStyle": [
+            "error",
+            {
+                "assertionStyle": "angle-bracket"
+            }
+        ],
+        "@typescript-eslint/consistent-type-definitions": [
+            "error",
+            "type"
+        ],
+        "@typescript-eslint/consistent-type-imports": [
+            "error"
+        ],
+        "@typescript-eslint/member-delimiter-style": [
+            "error",
+            {
+                "singleline": {
+                    "requireLast": true
+                }
+            }
+        ],
+        "@typescript-eslint/method-signature-style": [
+            "error"
+        ],
+        "@typescript-eslint/no-base-to-string": [
+            "error"
+        ],
+        "@typescript-eslint/no-confusing-non-null-assertion": [
+            "error"
+        ],
         "@typescript-eslint/no-invalid-void-type": [
             "error"
         ],
@@ -423,7 +467,110 @@
         ],
         "@typescript-eslint/no-require-imports": [
             "error"
+        ],
+        "@typescript-eslint/no-type-alias": [
+            "error"
+        ],
+        "@typescript-eslint/no-unnecessary-boolean-literal-compare": [
+            "error"
+        ],
+        "@typescript-eslint/no-unnecessary-condition": [
+            "error",
+            {
+                "allowConstantLoopConditions": true
+            }
+        ],
+        "@typescript-eslint/no-unnecessary-qualifier": [
+            "error"
+        ],
+        "@typescript-eslint/no-unnecessary-type-arguments": [
+            "error"
+        ],
+        "@typescript-eslint/non-nullable-type-assertion-style": [
+            "error"
+        ],
+        "@typescript-eslint/prefer-for-of": [
+            "error"
+        ],
+        "@typescript-eslint/prefer-function-type": [
+            "error"
+        ],
+        "@typescript-eslint/prefer-includes": [
+            "error"
+        ],
+        "@typescript-eslint/prefer-literal-enum-member": [
+            "error",
+            {
+                "allowBitwiseExpressions": true
+            }
+        ],
+        "@typescript-eslint/prefer-nullish-coalescing": [
+            "error"
+        ],
+        "@typescript-eslint/prefer-optional-chain": [
+            "error"
+        ],
+        "@typescript-eslint/prefer-readonly": [
+            "error"
+        ],
+        "@typescript-eslint/prefer-regexp-exec": [
+            "error"
+        ],
+        "@typescript-eslint/prefer-return-this-type": [
+            "error"
+        ],
+        "@typescript-eslint/prefer-string-starts-ends-with": [
+            "error"
+        ],
+        "@typescript-eslint/prefer-ts-expect-error": [
+            "error"
+        ],
+        "@typescript-eslint/promise-function-async": [
+            "error"
+        ],
+        "@typescript-eslint/require-array-sort-compare": [
+            "error"
+        ],
+        "@typescript-eslint/restrict-plus-operands": [
+            "error"
+        ],
+        "@typescript-eslint/restrict-template-expressions": [
+            "error"
+        ],
+        "@typescript-eslint/sort-type-union-intersection-members": [
+            "error"
+        ],
+        "@typescript-eslint/strict-boolean-expressions": [
+            "error"
+        ],
+        "@typescript-eslint/switch-exhaustiveness-check": [
+            "error"
+        ],
+        "@typescript-eslint/triple-slash-reference": [
+            "error"
+        ],
+        "@typescript-eslint/unified-signatures": [
+            "error"
         ]
-        // Nothing after @typescript-eslint/no-require-imports has been audited
-    }
+    },
+    "overrides": [
+        {
+            // enable the rule specifically for TypeScript files
+            "files": [
+                "*.ts",
+                "*.tsx"
+            ],
+            "rules": {
+                "@typescript-eslint/explicit-function-return-type": [
+                    "error"
+                ],
+                "@typescript-eslint/explicit-member-accessibility": [
+                    "error"
+                ],
+                "@typescript-eslint/explicit-module-boundary-types": [
+                    "error"
+                ]
+            }
+        }
+    ]
 }
