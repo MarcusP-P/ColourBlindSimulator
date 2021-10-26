@@ -1,4 +1,4 @@
-export function helloWorld() : void {
+export function helloWorld(): void {
     const element = document.getElementById("hello-world");
 
     if (element) {
