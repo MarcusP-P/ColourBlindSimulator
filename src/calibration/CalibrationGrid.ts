@@ -59,7 +59,9 @@ export class CalibrationGrid {
             throw new Error ("row must be between 0 and 50 inclusive");
         }
 
-        this.grid[column]![row]=colour;
+        const newRow=50-row;
+
+        this.grid[column]![newRow] = colour;
     }
 
     getColourByColumnRow(column:number, row:number) : NumericTriple{
@@ -71,8 +73,10 @@ export class CalibrationGrid {
         {
             throw new Error ("row must be between 0 and 51 inclusive");
         }
+        
+        const newRow=50-row;
 
-        return(this.grid[column]![row]!);
+        return (this.grid[column]![newRow]!);
     }
 
 
