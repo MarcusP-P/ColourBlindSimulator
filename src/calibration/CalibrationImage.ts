@@ -2,25 +2,27 @@ import type { NumericTriple } from "cie-colorconverter/dist/Matrix";
 import type { CalibrationGrid } from "./CalibrationGrid";
 
 export class CalibrationImage {
-    private calibrationCanvas: HTMLCanvasElement;
+    private readonly calibrationCanvas: HTMLCanvasElement;
+
+    private readonly context: CanvasRenderingContext2D;
 
     public constructor(calibrationCanvas: HTMLCanvasElement) {
         this.calibrationCanvas = calibrationCanvas;
-    }
-
-    public initialiseCanvas(calibrationGrid: CalibrationGrid): void {
         this.calibrationCanvas.width = 8 * 51;
         this.calibrationCanvas.height = 8 * 51;
         this.calibrationCanvas.style.backgroundColor = "#000000";
-        const context = this.calibrationCanvas.getContext("2d");
-
-        if (context === null) {
+        const myContext = this.calibrationCanvas.getContext("2d");
+        if (myContext===null){
             throw new Error("Can't get context");
         }
+        this.context=myContext;
+        this.context.globalCompositeOperation = "source-over";
+    }
 
+    public initialiseCanvas(calibrationGrid: CalibrationGrid): void {
         for (let column = 0; column <= 50; column++) {
             for (let row = 0; row <= 50; row++) {
-                CalibrationImage.drawCircle(column, row, calibrationGrid.getColourByColumnRow(column, row), context);
+                CalibrationImage.drawCircle(column, row, calibrationGrid.getColourByColumnRow(column, row), this.context);
             }
         }
     }
