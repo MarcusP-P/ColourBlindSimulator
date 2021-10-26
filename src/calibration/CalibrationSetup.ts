@@ -116,13 +116,16 @@ export function setupCalibration(baseLuv: NumericTriple, testLuv: NumericTriple,
             const intercept1x = y / gradient1;
             const intercept2x = y / gradient2;
 
+            const luminanceVariationBound=0.5;
+            const luminanceVariation=(Math.random()*luminanceVariationBound - luminanceVariationBound/2)+1;
+
             // Check if we need to draw a colour point, or a background point. We want to draw
             // a colour point, on the circle, unless it's also part of the empty wedge.
             if ((circleRadius > 13.5 && circleRadius <= 20.5) && !((x * intercept1Direction > intercept1x * intercept1Direction) && (x * intercept2Direction > intercept2x * intercept2Direction))) {
-                calibrationGrid.setColourByXY(x, y, converter.Luv_to_RGB(testLuv));
+                calibrationGrid.setColourByXY(x, y, converter.Luv_to_RGB([testLuv[0]*luminanceVariation, testLuv[1], testLuv[2]]));
             }
             else {
-                calibrationGrid.setColourByXY(x, y, converter.Luv_to_RGB(baseLuv));
+                calibrationGrid.setColourByXY(x, y, converter.Luv_to_RGB([baseLuv[0]*luminanceVariation, baseLuv[1], baseLuv[2]]));
             }
         }
     }
