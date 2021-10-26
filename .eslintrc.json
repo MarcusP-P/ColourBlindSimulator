@@ -10,7 +10,8 @@
         "sourceType": "module",
         "ecmaFeatures": {
             "impliedStrict": true
-        }
+        },
+        "project": "./tsconfig.json"
     },
     "plugins": [
         "@typescript-eslint"
@@ -81,13 +82,6 @@
             "error",
             {
                 "disallowArithmeticOperators": true
-            }
-        ],
-        "no-unused-vars": [
-            "warn",
-            {
-                "args": "all",
-                "caughtErrors": "all"
             }
         ],
         "no-use-before-define": [
@@ -392,7 +386,10 @@
         // Layout & Formatting
         "indent": [
             "error",
-            4
+            4,
+            {
+                "SwitchCase": 1
+            }
         ],
         "linebreak-style": [
             "off",
@@ -423,7 +420,7 @@
         "@typescript-eslint/consistent-indexed-object-style": [
             "error"
         ],
-        "@typescript-eslint/assertionStyle": [
+        "@typescript-eslint/consistent-type-assertions": [
             "error",
             {
                 "assertionStyle": "angle-bracket"
