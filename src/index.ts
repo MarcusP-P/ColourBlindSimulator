@@ -2,7 +2,7 @@ import { helloWorld } from "./helloWorld";
 
 import { ColorConverter } from "cie-colorconverter";
 import {CalibrationImage} from "./calibration/CalibrationImage"
-import {setupCalibration} from "./calibration/CalibrationSetup"
+import {setupCalibration, Quadrant} from "./calibration/CalibrationSetup";
 const converter = new ColorConverter();
 
 converter.RefWhite = "D65";
