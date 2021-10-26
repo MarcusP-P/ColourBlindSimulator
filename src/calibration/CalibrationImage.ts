@@ -28,22 +28,22 @@ export class CalibrationImage {
 
 
     drawCircle(column: number, row: number, color: NumericTriple, context: CanvasRenderingContext2D) {
-        const left = column * 8;
-        const top = row * 8;
+        const drawX = column * 8;
+        const drawY = row * 8;
 
-        context.fillStyle=`rgb(${color[0]},${color[1]},${color[2]})`;
+        context.fillStyle = `rgb(${color[0]},${color[1]},${color[2]})`;
 
-        context.fillRect(top+2, left+3, 1, 1);
-        context.fillRect(top+2, left+4, 1, 1);
-        context.fillRect(top+3, left+2, 1, 1);
-        context.fillRect(top+3, left+3, 1, 1);
-        context.fillRect(top+3, left+4, 1, 1);
-        context.fillRect(top+3, left+5, 1, 1);
-        context.fillRect(top+4, left+2, 1, 1);
-        context.fillRect(top+4, left+3, 1, 1);
-        context.fillRect(top+4, left+4, 1, 1);
-        context.fillRect(top+4, left+5, 1, 1);
-        context.fillRect(top+5, left+3, 1, 1);
-        context.fillRect(top+5, left+4, 1, 1);
+        context.fillRect(drawX + 3, drawY + 2, 1, 1);
+        context.fillRect(drawX + 4, drawY + 2, 1, 1);
+        context.fillRect(drawX + 2, drawY + 3, 1, 1);
+        context.fillRect(drawX + 3, drawY + 3, 1, 1);
+        context.fillRect(drawX + 4, drawY + 3, 1, 1);
+        context.fillRect(drawX + 5, drawY + 3, 1, 1);
+        context.fillRect(drawX + 2, drawY + 4, 1, 1);
+        context.fillRect(drawX + 3, drawY + 4, 1, 1);
+        context.fillRect(drawX + 4, drawY + 4, 1, 1);
+        context.fillRect(drawX + 5, drawY + 4, 1, 1);
+        context.fillRect(drawX + 3, drawY + 5, 1, 1);
+        context.fillRect(drawX + 4, drawY + 5, 1, 1);
     }
 }
