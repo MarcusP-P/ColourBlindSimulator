@@ -11,11 +11,14 @@ export function setupCalibration(baseLuv: NumericTriple, testLuv: NumericTriple)
 
     for (let x = -25; x <= 25; x++) {
         for (let y = -25; y <= 25; y++) {
-            if (y % 2 === 0) {
-                calibrationGrid.setColourByXY(x, y, converter.Luv_to_RGB(baseLuv));
+            // to see if points are in the circle, use the formula for a circle: x^2+y^2=radius^2,
+            // and see if the radius falls into the one that we want. Only calculate it once...
+            const circleRadius=Math.sqrt(x**2 + y**2);
+            if (circleRadius > 13.5 && circleRadius<=20.5) {
+                calibrationGrid.setColourByXY(x, y, converter.Luv_to_RGB(testLuv));
             }
             else {
-                calibrationGrid.setColourByXY(x, y, converter.Luv_to_RGB(testLuv));
+                calibrationGrid.setColourByXY(x, y, converter.Luv_to_RGB(baseLuv));
             }
         }
     }
