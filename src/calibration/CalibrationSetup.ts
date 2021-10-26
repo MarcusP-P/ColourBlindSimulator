@@ -1,15 +1,24 @@
 import type { NumericTriple } from "cie-colorconverter/dist/Matrix";
-import { CalibrationGrid } from "./CalibrationGrid"
+import { CalibrationGrid } from "./CalibrationGrid";
 import { ColorConverter } from "cie-colorconverter";
 
+// eslint-disable-next-line no-shadow
 export const enum Quadrant {
+    // eslint-disable-next-line no-unused-vars
     North,
+    // eslint-disable-next-line no-unused-vars
     NorthEast,
+    // eslint-disable-next-line no-unused-vars
     East,
+    // eslint-disable-next-line no-unused-vars
     SouthEast,
+    // eslint-disable-next-line no-unused-vars
     South,
+    // eslint-disable-next-line no-unused-vars
     SouthWest,
+    // eslint-disable-next-line no-unused-vars
     West,
+    // eslint-disable-next-line no-unused-vars
     NorthWest,
 }
 
@@ -98,9 +107,9 @@ export function setupCalibration(baseLuv: NumericTriple, testLuv: NumericTriple,
 
     for (let x = -25; x <= 25; x++) {
         for (let y = -25; y <= 25; y++) {
-            // to see if points are in the circle, use the formula for a circle: x^2+y^2=radius^2,
+            // To see if points are in the circle, use the formula for a circle: x^2+y^2=radius^2,
             // and see if the radius falls into the one that we want. Only calculate it once...
-            const circleRadius=Math.sqrt(x**2 + y**2);
+            const circleRadius = Math.sqrt(x ** 2 + y ** 2);
 
             // To see if we need to exclude thepoints for the wedge, we calculate what the x value along the
             // two lines of the wedge are to match the current y. The x should be between them 
@@ -109,7 +118,7 @@ export function setupCalibration(baseLuv: NumericTriple, testLuv: NumericTriple,
 
             // Check if we need to draw a colour point, or a background point. We want to draw
             // a colour point, on the circle, unless it's also part of the empty wedge.
-            if ((circleRadius > 13.5 && circleRadius<=20.5) && !((x * intercept1Direction > intercept1x * intercept1Direction) && (x * intercept2Direction > intercept2x * intercept2Direction))) {
+            if ((circleRadius > 13.5 && circleRadius <= 20.5) && !((x * intercept1Direction > intercept1x * intercept1Direction) && (x * intercept2Direction > intercept2x * intercept2Direction))) {
                 calibrationGrid.setColourByXY(x, y, converter.Luv_to_RGB(testLuv));
             }
             else {
@@ -117,6 +126,7 @@ export function setupCalibration(baseLuv: NumericTriple, testLuv: NumericTriple,
             }
         }
     }
+    calibrationGrid.setColourByXY(25, 10, [0, 0, 255]);
 
     return calibrationGrid;
 }
