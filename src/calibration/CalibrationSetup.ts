@@ -129,7 +129,6 @@ export function setupCalibration(baseLuv: NumericTriple, testLuv: NumericTriple,
             }
         }
     }
-    calibrationGrid.setColourByXY(25, 10, [0, 0, 255]);
 
     return calibrationGrid;
 }
