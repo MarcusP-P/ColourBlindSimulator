@@ -8,6 +8,8 @@ if (calibrationHost===null) {
 }
 
 const tester=new CalibrationTest(calibrationHost,[50, 0, 0], [50, -11.5396, -121.9686]);
-tester.getCalibrationResult();
+const promise=tester.getCalibrationResult();
+promise.then((result)=>{console.log(`${result?"true":"false"}`);});
+console.log("foo");
 
 helloWorld();

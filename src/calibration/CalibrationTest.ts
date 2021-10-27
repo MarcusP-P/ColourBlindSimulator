@@ -16,6 +16,8 @@ export class CalibrationTest {
 
     private readonly quadrant: Quadrant;
 
+    private animationRunning:boolean;
+
     public constructor(parentDiv: HTMLDivElement, baseLuv: NumericTriple, testLuv: NumericTriple) {
         this.parentDiv = parentDiv;
 
@@ -71,20 +73,32 @@ export class CalibrationTest {
             this.quadrant=Quadrant.NorthWest;
         }
 
+        this.animationRunning=false;
     }
 
-    public getCalibrationResult(): boolean {
+    // eslint-disable-next-line require-await
+    public async getCalibrationResult(): Promise<boolean> {
+        this.animationRunning=true;
         window.requestAnimationFrame((time:number) => {this.animate(time);});
-        return false;
+        
+        return new Promise<boolean>((resolve)=> {
+            this.canvas.addEventListener("click", (event)=>{
+                this.animationRunning=false;
+                console.log(`OffsetX=${event.offsetX}, OffsetY=${event.offsetY}`);
+                resolve(false);
+            }, {once: true});
+        });
     }
 
     public animate(time: number): void {
-        if (time-this.lastTime > 50)
-        {
-            const generatedGrid = setupCalibration(this.baseLuv, this.testLuv, this.quadrant);
-            this.calibrationImage.initialiseCanvas(generatedGrid);
-            this.lastTime=time;
+        if (this.animationRunning){
+            if (time-this.lastTime > 50)
+            {
+                const generatedGrid = setupCalibration(this.baseLuv, this.testLuv, this.quadrant);
+                this.calibrationImage.initialiseCanvas(generatedGrid);
+                this.lastTime=time;
+            }
+            window.requestAnimationFrame((newTime:number) => {this.animate(newTime);});
         }
-        window.requestAnimationFrame((newTime:number) => {this.animate(newTime);});
     }
 }
