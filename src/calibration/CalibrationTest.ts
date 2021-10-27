@@ -14,6 +14,8 @@ export class CalibrationTest {
     private readonly baseLuv: NumericTriple;
     private readonly testLuv: NumericTriple;
 
+    private readonly quadrant: Quadrant;
+
     public constructor(parentDiv: HTMLDivElement, baseLuv: NumericTriple, testLuv: NumericTriple) {
         this.parentDiv = parentDiv;
 
@@ -36,6 +38,39 @@ export class CalibrationTest {
         this.testLuv=testLuv;
 
         this.lastTime=0;
+
+        let quadrantSelector=Math.random();
+
+        // to make sure we have equal chances of each quadrant, we need to exclude 1
+        while (quadrantSelector===1)
+        {
+            quadrantSelector=Math.random();
+        }
+        if (quadrantSelector < 0.125){
+            this.quadrant=Quadrant.North;
+        }
+        else if (quadrantSelector < 0.25){
+            this.quadrant=Quadrant.NorthEast;
+        }
+        else if (quadrantSelector < 0.375){
+            this.quadrant=Quadrant.East;
+        }
+        else if (quadrantSelector < 0.5){
+            this.quadrant=Quadrant.SouthEast;
+        }
+        else if (quadrantSelector < 0.625){
+            this.quadrant=Quadrant.South;
+        }
+        else if (quadrantSelector < 0.75){
+            this.quadrant=Quadrant.SouthWest;
+        }
+        else if (quadrantSelector < 0.875){
+            this.quadrant=Quadrant.West;
+        }
+        else {
+            this.quadrant=Quadrant.NorthWest;
+        }
+
     }
 
     public getCalibrationResult(): boolean {
@@ -46,7 +81,7 @@ export class CalibrationTest {
     public animate(time: number): void {
         if (time-this.lastTime > 50)
         {
-            const generatedGrid = setupCalibration(this.baseLuv, this.testLuv, Quadrant.North);
+            const generatedGrid = setupCalibration(this.baseLuv, this.testLuv, this.quadrant);
             this.calibrationImage.initialiseCanvas(generatedGrid);
             this.lastTime=time;
         }
