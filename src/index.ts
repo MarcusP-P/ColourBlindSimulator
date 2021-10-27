@@ -7,7 +7,7 @@ if (calibrationHost===null) {
     throw new Error("Can't find canvashost");
 }
 
-const tester=new CalibrationTest(calibrationHost,[50, 0, 0], [50, -120, 25]);
+const tester=new CalibrationTest(calibrationHost,[50, 0, 0], [50, -11.5396, -121.9686]);
 tester.getCalibrationResult();
 
 helloWorld();
