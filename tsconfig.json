@@ -23,6 +23,7 @@
     "declaration": true,
     "declarationMap": true,
     "inlineSources": true,
+    "importHelpers": true,
     "noEmit": false,
     "outDir": "./build",
     "removeComments": true,

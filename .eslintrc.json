@@ -459,7 +459,10 @@
             "error"
         ],
         "@typescript-eslint/no-type-alias": [
-            "error"
+            "error",
+            {
+                "allowLiterals": "always"
+            }
         ],
         "@typescript-eslint/no-unnecessary-boolean-literal-compare": [
             "error"
