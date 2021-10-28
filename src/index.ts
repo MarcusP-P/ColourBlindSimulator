@@ -7,5 +7,6 @@ if (calibrationHost===null) {
 
 const tester=new CalibrationTest(calibrationHost,[50, 0, 0], [50, -120, 25]);
 const promise=tester.getCalibrationResult();
-promise.then((result)=>{console.log(`${result?"true":"false"}`);});
+// eslint-disable-next-line no-alert
+promise.then((result)=>{alert(`You ${result?"have":"haven't"} clicked on the gap`);}); 
 console.log("foo");
