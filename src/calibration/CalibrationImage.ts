@@ -5,6 +5,10 @@ export class CalibrationImage {
     private readonly calibrationCanvas: HTMLCanvasElement;
 
     private readonly context: CanvasRenderingContext2D;
+    public readonly originX=51*8/2;
+    public readonly originY=51*8/2;
+    public readonly totalX=51*8;
+    public readonly totalY=51*8;
 
     public constructor(calibrationCanvas: HTMLCanvasElement) {
         this.calibrationCanvas = calibrationCanvas;

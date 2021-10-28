@@ -1,7 +1,7 @@
 import type { NumericTriple } from "cie-colorconverter/dist/Matrix";
 import { CalibrationImage } from "./CalibrationImage";
 import { setupCalibration } from "./CalibrationSetup";
-import { Quadrant } from "./SectorUtilities";
+import { Quadrant, SectorUtilities } from "./SectorUtilities";
 
 export class CalibrationTest {
     private readonly canvas: HTMLCanvasElement;
@@ -83,8 +83,14 @@ export class CalibrationTest {
         return new Promise<boolean>((resolve) => {
             this.canvas.addEventListener("click", (event) => {
                 this.animationRunning = false;
-                console.log(`OffsetX=${event.offsetX}, OffsetY=${event.offsetY}`);
-                resolve(false);
+
+                // convert the co-ordinate system from origin at top left, y increasing down to centered origin
+                const x=event.offsetX-this.calibrationImage.originX;
+                const y=this.calibrationImage.totalY-event.offsetY-this.calibrationImage.originY;
+                const sectorDefinition = SectorUtilities.GetSectorDefinition(this.quadrant);
+                const correctClick = SectorUtilities.IsPointInSector(x,y,sectorDefinition);
+                console.log(`OffsetX=${event.offsetX}, OffsetY=${event.offsetY}, X=${x}, Y=${y}, correct=${correctClick?"true":"false"}`);
+                resolve(correctClick);
             }, { once: true });
         });
     }
