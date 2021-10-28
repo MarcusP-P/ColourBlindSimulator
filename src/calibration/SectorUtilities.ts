@@ -116,6 +116,11 @@ export class SectorUtilities {
     }
 
     public static IsPointInSector(x: number, y: number, sectorDefinition: SectorDefinition): boolean {
+        // 0,0 is never included in the sector, no matter what.
+        if (x > -0.5 && x < 0.5 && y > -0.5 && y < 0.5) {
+            return false;
+        }
+
         // To see if we need to exclude thepoints for the wedge, we calculate what the x value along the
         // two lines of the wedge are to match the current y. The x should be between them 
         const intercept1x = y / sectorDefinition.gradientAntiClockwise;
