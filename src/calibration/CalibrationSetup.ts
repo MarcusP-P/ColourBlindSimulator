@@ -13,6 +13,7 @@ export function setupCalibration(baseLuv: NumericTriple, testLuv: NumericTriple,
     const converter = new ColorConverter();
 
     converter.RefWhite = "D65";
+    converter.GammaModel="sRGB";
 
     for (let x = -25; x <= 25; x++) {
         for (let y = -25; y <= 25; y++) {
