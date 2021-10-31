@@ -3,44 +3,22 @@
 	"tasks": [
 		{
 			"type": "npm",
-			"script": "dev",
-			"problemMatcher": [],
-			"label": "build-dev",
-			"detail": "Build static developer site.",
-			"group": {
-				"kind": "build",
-				"isDefault": true,
-			},
-		},
-		{
-			"type": "npm",
 			"script": "start",
-			"label": "dev-server",
-			"detail": "Start webpack-dev-server.",
+			"label": "server",
+			"detail": "Start parcel server.",
 			"promptOnClose": true,
 			"isBackground": true,
 			"problemMatcher": {
-				"owner": "webpack",
-				"severity": "error",
-				"fileLocation": "absolute",
-				"pattern": [
-					{
-						"regexp": "ERROR in (.*)",
-						"file": 1
-					},
-					{
-						"regexp": "\\((\\d+),(\\d+)\\):(.*)",
-						"line": 1,
-						"column": 2,
-						"message": 3
-					}
-				],
-				"background": {
-					"activeOnStart": true,
-					"beginsPattern": "Compiling\\.\\.\\.",
-					"endsPattern": "compiled.*\\bsuccessfully"
-				}
-			}
+				"owner": "parcel",
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": ".*",
+                    "endsPattern": "Built"
+                },
+                "pattern": {
+                    "regexp": "",
+                }
+			},
 		},
 		{
 			"type": "npm",
@@ -48,7 +26,10 @@
 			"problemMatcher": [],
 			"label": "build",
 			"detail": "Build static production site.",
-			"group": "build",
-		},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		}
 	],
 }
