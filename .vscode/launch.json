@@ -1,11 +1,19 @@
 {
     "configurations": [
         {
+            "name": "Launch Edge: Dev",
+            "type": "pwa-msedge",
+            "preLaunchTask": "build-dev",
+            "request": "launch",
+            "url": "file:///${workspaceFolder}/dist/index.html",
+            "webRoot": "${workspaceFolder}",
+        },
+        {
             "name": "Launch Edge: Webpack Server",
             "type": "pwa-msedge",
-            "preLaunchTask": "server",
+            "preLaunchTask": "dev-server",
             "request": "launch",
-            "url": "http://localhost:1234",
+            "url": "http://localhost:4000",
             "webRoot": "${workspaceFolder}",
         },
         {

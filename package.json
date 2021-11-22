@@ -1,22 +1,27 @@
 {
   "devDependencies": {
-    "@parcel/config-default": "^2.0.0",
-    "@parcel/transformer-sass": "^2.0.0",
-    "@parcel/transformer-typescript-tsc": "^2.0.0",
     "@types/fscreen": "^1.0.1",
     "@typescript-eslint/eslint-plugin": "^5.1.0",
     "@typescript-eslint/parser": "^5.1.0",
+    "copy-webpack-plugin": "^9.0.1",
+    "css-loader": "^6.5.1",
     "eslint": "^8.0.1",
-    "parcel": "^2.0.0",
+    "mini-css-extract-plugin": "^2.4.5",
+    "node-sass": "^6.0.1",
     "sass": "^1.43.4",
+    "sass-loader": "^12.3.0",
     "ts-loader": "^9.2.6",
     "tsc": "^2.0.3",
-    "typescript": "^4.4.3"
+    "typescript": "^4.4.3",
+    "webpack": "^5.53.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.2.1"
   },
   "scripts": {
-    "build": "npx parcel build index.html",
+    "build": "npx webpack --mode production",
     "lint": "npx eslint . --ext .ts",
-    "start": "npx parcel index.html"
+    "dev": "npx webpack --mode development",
+    "start": "npx webpack serve --mode development --no-color"
   },
   "dependencies": {
     "cie-colorconverter": "^2.0.1",
