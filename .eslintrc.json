@@ -461,7 +461,7 @@
         "@typescript-eslint/no-type-alias": [
             "error",
             {
-                "allowLiterals": "always"
+                "allowAliases ": "always"
             }
         ],
         "@typescript-eslint/no-unnecessary-boolean-literal-compare": [
