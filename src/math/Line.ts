@@ -1,9 +1,5 @@
-import "./MathExtensions"
-
-export type Point = {
-    x: number;
-    y: number;
-};
+import "./MathExtensions";
+import { Point } from "./Cartesian";
 
 type CartesianLine = {
     yIntercept: number;
