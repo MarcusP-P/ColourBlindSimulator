@@ -1,5 +1,5 @@
-import "./MathExtensions";
-import { Point } from "./Cartesian";
+import type { Point } from "./Cartesian";
+import { MathUtilities } from "./MathExtensions";
 
 type CartesianLine = {
     yIntercept: number;
@@ -76,20 +76,20 @@ export class Line {
     public isPointOnLine(position: Point): boolean {
         if (typeof this.LineFormula === "number") {
             // If it's a line, this is an easy test.
-            return (Math.isZero(position.x - this.LineFormula))
+            return (MathUtilities.isZero(position.x - this.LineFormula))
         }
 
         // Our formula is in the form of y = mx + c
         // If there is no gradient, jsut check if it's above...
         if (this.LineFormula.gradient === 0) {
-            return (Math.isZero(position.y - this.LineFormula.yIntercept))
+            return (MathUtilities.isZero(position.y - this.LineFormula.yIntercept))
         }
 
         // Otherwise just check
 
         // y=mx+c
         // (y-c)/m=x
-        return (Math.isZero(position.y - (this.LineFormula.gradient * position.x) + this.LineFormula.yIntercept))
+        return (MathUtilities.isZero(position.y - (this.LineFormula.gradient * position.x) + this.LineFormula.yIntercept))
     }
 
     // A positive distance moves right, or up on a vertical line
