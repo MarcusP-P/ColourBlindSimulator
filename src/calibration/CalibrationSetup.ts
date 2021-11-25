@@ -27,7 +27,7 @@ export function setupCalibration(baseLuv: NumericTriple, testLuv: NumericTriple,
 
             // Check if we need to draw a colour point, or a background point. We want to draw
             // a colour point, on the circle, unless it's also part of the empty wedge.
-            if ((circleRadius > 13.5 && circleRadius <= 20.5) && !SectorUtilities.IsPointInSector(x, y, sectorDefinition)) {
+            if ((circleRadius > 13.5 && circleRadius <= 20.5) && !SectorUtilities.IsPointInSector({x:x, y:y}, sectorDefinition)) {
                 calibrationGrid.setColourByXY(x, y, converter.Luv_to_RGB([testLuv[0] * luminanceVariation, testLuv[1], testLuv[2]]));
             }
             else {

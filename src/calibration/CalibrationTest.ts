@@ -71,7 +71,6 @@ export class CalibrationTest {
         else {
             this.quadrant = Quadrant.NorthWest;
         }
-
         this.animationRunning = false;
     }
 
@@ -88,7 +87,7 @@ export class CalibrationTest {
                 const x=event.offsetX-this.calibrationImage.originX;
                 const y=this.calibrationImage.totalY-event.offsetY-this.calibrationImage.originY;
                 const sectorDefinition = SectorUtilities.GetSectorDefinition(this.quadrant);
-                const correctClick = SectorUtilities.IsPointInSector(x,y,sectorDefinition);
+                const correctClick = SectorUtilities.IsPointInSector({x:x,y:y},sectorDefinition);
                 console.log(`OffsetX=${event.offsetX}, OffsetY=${event.offsetY}, X=${x}, Y=${y}, correct=${correctClick?"true":"false"}`);
                 resolve(correctClick);
             }, { once: true });
