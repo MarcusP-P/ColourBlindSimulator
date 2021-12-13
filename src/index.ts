@@ -1,5 +1,4 @@
-import { CalibrationTest } from "./calibration/CalibrationTest";
-
+import { CalibrationScheduler } from "./calibration/CalibrationScheduler";
 import { ColorConverter } from "cie-colorconverter";
 
 const approach1Button = document.querySelector<HTMLButtonElement>("#approach1");
@@ -8,22 +7,9 @@ if (approach1Button=== null) {
     throw new Error("Can't locate intorduction container");
 }
 
-approach1Button.addEventListener("click", () => {
-    const introductionContainer= document.querySelector<HTMLDivElement>("#introduction");
-    const calibrationHost = document.querySelector<HTMLDivElement>("#canvasHost");
-    if (introductionContainer=== null) {
-        throw new Error("Can't locate intorduction container");
-    }
-    if (calibrationHost === null) {
-        throw new Error("Can't find canvashost");
-    }
-    introductionContainer.classList.add("hide-all");
-    calibrationHost.classList.remove("hide-all");
-
-    const tester = new CalibrationTest(calibrationHost, [50, 22.294886634339058, 80.86387581452101], [50, -120, 25]);
-    const promise = tester.getCalibrationResult();
-    // eslint-disable-next-line no-alert
-    promise.then((result) => { alert(`You ${result ? "have" : "haven't"} clicked on the gap`); });
+approach1Button.addEventListener("click", async () => {
+    let foo = new CalibrationScheduler();
+    await foo.findPoint();
 });
 
 const x = 0.403;
