@@ -7,3 +7,9 @@ the [jsColorblindSimulator project][jsColorblindSimulator] to add
 additional modes. I may still port them later.
 
 [jsColorblindSimulator]: https://github.com/MaPePeR/jsColorblindSimulator "jsColorblindSimulator"
+
+## ToDo
+
+- [ ] Add button for "not visible"
+- [ ] Limit clicks to circle, rather than entire wedge
+- [ ] Make test full screen
