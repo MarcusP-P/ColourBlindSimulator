@@ -7,6 +7,7 @@ export class CalibrationTest {
     private readonly canvas: HTMLCanvasElement;
     private readonly parentDiv: HTMLDivElement;
     private readonly container: HTMLDivElement;
+    private readonly unableToTell: HTMLButtonElement;
 
     private readonly calibrationImage: CalibrationImage;
     private lastTime: number;
@@ -24,16 +25,20 @@ export class CalibrationTest {
         this.container = document.createElement("div");
         this.parentDiv.appendChild(this.container);
         this.container.style.background = "#000000";
-        this.container.style.width = "100%";
         this.container.style.height = "100%";
         this.container.style.alignItems = "center";
-        this.container.style.justifyContent = "center";
         this.container.style.display = "flex";
+        this.container.style.flexDirection = "column";
+        
+        this.unableToTell = document.createElement("button");
+        this.unableToTell.innerText="Unable to tell";
+
+        this.container.appendChild(this.unableToTell);
 
         this.canvas = document.createElement("canvas");
         this.canvas.style.margin = "auto";
         this.container.appendChild(this.canvas);
-
+        
         this.calibrationImage = new CalibrationImage(this.canvas);
 
         this.baseLuv = baseLuv;
@@ -72,6 +77,8 @@ export class CalibrationTest {
             this.quadrant = Quadrant.NorthWest;
         }
         this.animationRunning = false;
+
+
     }
 
     // eslint-disable-next-line require-await
@@ -89,7 +96,14 @@ export class CalibrationTest {
                 const sectorDefinition = SectorUtilities.GetSectorDefinition(this.quadrant);
                 const correctClick = SectorUtilities.IsPointInSector({x:x,y:y},sectorDefinition);
                 console.log(`OffsetX=${event.offsetX}, OffsetY=${event.offsetY}, X=${x}, Y=${y}, correct=${correctClick?"true":"false"}`);
+                this.container.remove();
                 resolve(correctClick);
+            }, { once: true });
+            this.unableToTell.addEventListener("click", () => {
+                this.animationRunning = false;
+
+                this.container.remove();
+                resolve(false);
             }, { once: true });
         });
     }
