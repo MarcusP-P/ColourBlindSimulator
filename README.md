@@ -10,6 +10,6 @@ additional modes. I may still port them later.
 
 ## ToDo
 
-- [ ] Add button for "not visible"
+- [X] Add button for "not visible"
 - [ ] Limit clicks to circle, rather than entire wedge
 - [ ] Make test full screen
