@@ -1,4 +1,5 @@
-import { degreesToGradient, Line } from "../math/Line";
+import { Line } from "../math/Line";
+import { MathUtilities } from "../math/MathExtensions";
 import type { Point } from "../math/Cartesian";
 
 // eslint-disable-next-line no-shadow
@@ -30,8 +31,8 @@ export class SectorUtilities {
     // that deliniate our segments, at either 22.5 or 67.5 degrees
     // The lines on the edge of our slice are either at +/- 22.5 and +/-67.5 degrees.
 
-    private static readonly degrees22Gradient = degreesToGradient(22.5);
-    private static readonly degrees67Gradient = degreesToGradient(67.5);
+    private static readonly degrees22Gradient = MathUtilities.degreesToGradient(22.5);
+    private static readonly degrees67Gradient = MathUtilities.degreesToGradient(67.5);
 
     public static GetSectorDefinition(quadrant: Quadrant): SectorDefinition {
 

@@ -6,17 +6,14 @@ type CartesianLine = {
     gradient: number;
 }
 
-export function degreesToGradient(degrees: number): number {
-    if (degrees === 90) {
-        return Number.POSITIVE_INFINITY;
-    } else if (degrees === 270) {
-        return Number.NEGATIVE_INFINITY;
-    }
-    return Math.tan(degrees * Math.PI / 180);
-}
 
 export class Line {
     readonly LineFormula: CartesianLine | number;
+
+    public static yIntercept(position: Point, gradient: number): number {
+        const riseFromOrigin = position.x * gradient;
+        return position.y - riseFromOrigin;
+    }
 
     // construct a line in the form of y = mx + a
     public constructor(gradient: number, yIntercept: number);
@@ -103,6 +100,10 @@ export class Line {
             return ({ x: position.x, y: position.y + distance });
         }
 
+        if (this.LineFormula.gradient === 0) {
+            return ({ x: position.x + distance, y: position.y });
+
+        }
         const x = Math.sqrt(distance ** 2 / (Math.abs(this.LineFormula.gradient) - 1));
 
         const y = this.LineFormula.gradient * x + this.LineFormula.yIntercept;
