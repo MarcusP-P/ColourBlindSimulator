@@ -1,1 +1,1 @@
-html,body{height:100%}body{display:flex;flex-flow:column}#canvasHost{flex:1 1 auto}.hide-all{display:none}
+html,body{height:100%}body{display:flex;flex-flow:column}#canvasHost{flex:auto;flex-flow:column}.hide-all{display:none}
