@@ -14,27 +14,35 @@ export class CalibrationBinarySearch {
 
     private initialDistance: number;
 
+    public readonly angle: number;
+
     public constructor(origin: Point, angle: number, initialDistance: number) {
         this.origin = origin;
         const gradient = MathUtilities.degreesToGradient(angle);
-        const yIntercept = Line.yIntercept(origin, gradient);
-        this.searchLine = new Line(gradient, yIntercept);
+        if (gradient === Infinity || gradient === -Infinity) {
+            this.searchLine = new Line(origin.x);
+        } else {
+            const yIntercept = Line.yIntercept(origin, gradient);
+            this.searchLine = new Line(gradient, yIntercept);
+        }
 
         this.initialDistance = initialDistance;
+
+        this.angle = angle;
+
+        if (this.angle > 90 && this.angle <= 270) {
+            this.initialDistance *= -1;
+        }
 
         // This is the current minimum
         this.lowerBound = 0;
         this.upperBound = null;
 
-        this.current = 0;
-    }
-
-    public getFirstPoint(): Point {
         this.current = this.initialDistance;
-        return this.searchLine.getPointAlongLine(this.origin, this.current);
+
     }
 
-    public getNextPoint(prevoiousFound: boolean): Point {
+    public prepareNextPoint(prevoiousFound: boolean) {
         if (prevoiousFound) {
             this.upperBound = this.current;
         } else {
@@ -49,20 +57,28 @@ export class CalibrationBinarySearch {
         }
 
         console.log(`Gap between items: ${this.upperBound === null ? "searching..." : this.upperBound - this.lowerBound}`);
-        return this.searchLine.getPointAlongLine(this.origin, this.current);
     }
 
     public isGapLessThan(gap: number): boolean {
         if (this.upperBound === null) {
             return false;
         }
-        else
-        {
-            return (Math.abs(this.upperBound-this.lowerBound) <= gap);
+        else {
+            return (Math.abs(this.upperBound - this.lowerBound) <= gap);
         }
     }
 
-    public getFinalPoint () : Point {
-        return this.searchLine.getPointAlongLine(this.origin, this.current);
+    public getCurrentPoint(): Point {
+        console.log(`GetPoint - Gap between items: ${this.upperBound === null ? "searching..." : this.upperBound - this.lowerBound} current:${this.current}`);
+        const currentPoint = this.searchLine.getPointAlongLine(this.origin, this.current);
+        if (isNaN(currentPoint.x) || isNaN(currentPoint.y)) {
+            console.log(`Bad value`);
+        }
+        return currentPoint;
+    }
+
+
+    public getFinalPoint(): Point {
+        return this.searchLine.getPointAlongLine(this.origin, this.lowerBound);
     }
 }
