@@ -104,7 +104,9 @@ export class Line {
             return ({ x: position.x + distance, y: position.y });
 
         }
-        const x = Math.sqrt(distance ** 2 / (Math.abs(this.LineFormula.gradient) - 1));
+
+        const angle=Math.atan(this.LineFormula.gradient);
+        const x=Math.cos(angle)*distance+position.x;
 
         const y = this.LineFormula.gradient * x + this.LineFormula.yIntercept;
 
