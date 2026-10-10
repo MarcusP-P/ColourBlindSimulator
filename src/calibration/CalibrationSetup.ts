@@ -1,6 +1,6 @@
-import type { NumericTriple } from "cie-colorconverter/dist/Matrix";
+declare type NumericTriple = readonly [number, number, number];
 import { CalibrationGrid } from "./CalibrationGrid";
-import { ColorConverter } from "cie-colorconverter";
+import { LuvToRGB } from "cie-colorconverter";
 import type { Quadrant } from "./SectorUtilities";
 import { SectorUtilities } from "./SectorUtilities"; // eslint-disable-line no-duplicate-imports
 
@@ -9,11 +9,6 @@ export function setupCalibration(baseLuv: NumericTriple, testLuv: NumericTriple,
     const sectorDefinition = SectorUtilities.GetSectorDefinition(clearedQuadrant);
 
     const calibrationGrid = new CalibrationGrid();
-
-    const converter = new ColorConverter();
-
-    converter.RefWhite = "D65";
-    converter.GammaModel="sRGB";
 
     for (let x = -25; x <= 25; x++) {
         for (let y = -25; y <= 25; y++) {
@@ -28,10 +23,10 @@ export function setupCalibration(baseLuv: NumericTriple, testLuv: NumericTriple,
             // Check if we need to draw a colour point, or a background point. We want to draw
             // a colour point, on the circle, unless it's also part of the empty wedge.
             if ((circleRadius > 13.5 && circleRadius <= 20.5) && !SectorUtilities.IsPointInSector({x:x, y:y}, sectorDefinition)) {
-                calibrationGrid.setColourByXY(x, y, converter.Luv_to_RGB([testLuv[0] * luminanceVariation, testLuv[1], testLuv[2]]));
+                calibrationGrid.setColourByXY(x, y, LuvToRGB([testLuv[0] * luminanceVariation, testLuv[1], testLuv[2]], {refWhite:'D65'}));
             }
             else {
-                calibrationGrid.setColourByXY(x, y, converter.Luv_to_RGB([baseLuv[0] * luminanceVariation, baseLuv[1], baseLuv[2]]));
+                calibrationGrid.setColourByXY(x, y, LuvToRGB([baseLuv[0] * luminanceVariation, baseLuv[1], baseLuv[2]], {refWhite:'D65'}));
             }
         }
     }

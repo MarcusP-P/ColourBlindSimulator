@@ -1,4 +1,4 @@
-import type { NumericTriple } from "cie-colorconverter/dist/Matrix";
+declare type NumericTriple = readonly [number, number, number];
 import { CalibrationImage } from "./CalibrationImage";
 import { setupCalibration } from "./CalibrationSetup";
 import { Quadrant, SectorUtilities } from "./SectorUtilities";

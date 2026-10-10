@@ -1,4 +1,4 @@
-import type { NumericTriple } from "cie-colorconverter/dist/Matrix";
+declare type NumericTriple = readonly [number, number, number];
 
 export class CalibrationGrid {
     private readonly grid: NumericTriple[][] = [];

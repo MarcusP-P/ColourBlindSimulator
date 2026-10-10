@@ -1,32 +1,34 @@
 {
   "devDependencies": {
-    "@types/fscreen": "^1.0.1",
-    "@typescript-eslint/eslint-plugin": "^5.1.0",
-    "@typescript-eslint/parser": "^5.1.0",
-    "copy-webpack-plugin": "^10.0.0",
-    "css-loader": "^6.5.1",
-    "eslint": "^8.0.1",
-    "mini-css-extract-plugin": "^2.4.5",
-    "sass": "^1.43.4",
-    "sass-loader": "^12.3.0",
-    "ts-loader": "^9.2.6",
-    "tsc": "^2.0.3",
-    "typescript": "^4.4.3",
-    "webpack": "^5.53.0",
-    "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^4.2.1"
+    "@types/fscreen": "^1.0.4",
+    "@typescript-eslint/eslint-plugin": "^8.71.1",
+    "@typescript-eslint/parser": "^8.71.1",
+    "copy-webpack-plugin": "^14.0.0",
+    "css-loader": "^7.1.5",
+    "eslint": "^10.12.0",
+    "mini-css-extract-plugin": "^2.10.2",
+    "sass": "^1.105.1",
+    "sass-loader": "^17.0.1",
+    "ts-loader": "^9.6.2",
+    "typescript": "^5.9.3",
+    "webpack": "^5.111.1",
+    "webpack-cli": "^7.2.3",
+    "webpack-dev-server": "^6.0.0"
   },
   "scripts": {
-    "build": "npx webpack --mode production",
-    "lint": "npx eslint . --ext .ts",
-    "dev": "npx webpack --mode development",
-    "start": "npx webpack serve --mode development --no-color"
+    "build": "webpack --mode production",
+    "lint": "eslint . --ext .ts",
+    "dev": "webpack --mode development",
+    "start": "webpack server --watch --mode development --no-color"
   },
   "dependencies": {
-    "cie-colorconverter": "^2.0.1",
+    "cie-colorconverter": "^3.1.0",
     "fscreen": "^1.2.0"
   },
   "name": "colour-blind-simulator",
   "version": "1.0.0",
-  "private": true
+  "private": true,
+  "allowScripts": {
+    "@parcel/watcher@2.6.0": true
+  }
 }

@@ -41,8 +41,5 @@
     // Output Formatting https://www.typescriptlang.org/tsconfig#Output_Formatting_6256
     "noErrorTruncation": true,
     "pretty": false,
-  },
-  "include": [
-    "./src/**/*"
-  ]
+  }
 }

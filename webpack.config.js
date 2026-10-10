@@ -1,8 +1,6 @@
-const webpack = require("webpack"); // eslint-disable-line
 const path = require("path"); // eslint-disable-line
 const CopyPlugin = require("copy-webpack-plugin"); // eslint-disable-line
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const devMode = process.env.NODE_ENV !== "production";
 
 // The origional version of this file was generated using
 // https://createapp.dev/webpack/no-library--copywebpackplugin--typescript

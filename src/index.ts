@@ -1,5 +1,5 @@
 import { CalibrationScheduler } from "./calibration/CalibrationScheduler";
-import { ColorConverter } from "cie-colorconverter";
+import { XYZToLuv } from "cie-colorconverter";
 
 const approach1Button = document.querySelector<HTMLButtonElement>("#approach1");
 
@@ -19,15 +19,8 @@ const Y = 0.5;
 const X = Y / y * x;
 const Z = Y / y * (1 - x - y);
 
-const converter = new ColorConverter();
-
-converter.RefWhite = "D65";
-converter.GammaModel = "sRGB";
-
-const Luv = converter.XYZ_to_Luv([X, Y, Z]);
+const Luv = XYZToLuv([X, Y, Z], { refWhite: "D65" });
 
 console.count(`Luv=[${Luv[0]}, ${Luv[1]}, ${Luv[2]}], u'=${4 * X / (X + 15 * Y + 3 * Z)} v'=${9 * Y / (X + 15 * Y + 3 * Z)}`);
-
-
 
 console.log("foo");
